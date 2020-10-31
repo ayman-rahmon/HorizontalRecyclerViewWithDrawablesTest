@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
         // when an image is pressed it will be displayed in the main view...
         imageView.setImageDrawable(getDrawable(imageID));
         currentDisplayedImage = position ;
+
     }
 
 

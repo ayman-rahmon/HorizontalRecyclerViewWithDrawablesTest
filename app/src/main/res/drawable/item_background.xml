@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    when selected or active color it-->
+<!--    <item android:drawable="@color/colorAccent" android:state_activated="true"/>-->
+<!--    <item android:drawable="@android:color/darker_gray" android:state_pressed="false" android:state_selected="true" />-->
+        <item android:drawable="@color/colorAccent" android:state_pressed="false" android:state_selected="true" />
+<!-- when not selected primary dark ...-->
+<!--    <item android:drawable="@color/colorAccent" />-->
+
+
+</selector>
