@@ -124,11 +124,10 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
 
 
     @Override
-    public void onImageClicked(int imageID) {
+    public void onImageClicked(int imageID , int position) {
         // when an image is pressed it will be displayed in the main view...
         imageView.setImageDrawable(getDrawable(imageID));
-
-
+        currentDisplayedImage = position ;
     }
 
 

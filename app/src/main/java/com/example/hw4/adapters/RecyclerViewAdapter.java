@@ -55,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setImageID(imageIDs.get(position));
+        holder.setPosition(position);
         Log.d(TAG ,"size : " + imageIDs.size()) ;
         holder.image.setImageDrawable(mContext.getDrawable(holder.getImageID()));
 
@@ -86,7 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View view) {
             if(listener != null) {
-                listener.onImageClicked(imageID);
+                listener.onImageClicked(imageID , position);
             }
         }
 
@@ -98,8 +99,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void setImageID(int imageID) {
             this.imageID = imageID ;
         }
-        public void setPosition(int position){this.position= position ;}
+
+        public void setPosition(int position){
+            this.position= position ;
+        }
     }
+
 
 
 
