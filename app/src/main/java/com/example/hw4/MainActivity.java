@@ -56,23 +56,6 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
                     currentDisplayedImage-- ;
                     updateMainViewBasedOnCurrentVisiblePosition();
                 }
-
-
-/*
-                if(currentDisplayedImage < 0  ) {
-                    currentDisplayedImage = imageIDs.size()-1 ;
-                    updateMainViewBasedOnCurrentVisiblePosition();
-                }else if (currentDisplayedImage ==0) {
-                    updateMainViewBasedOnCurrentVisiblePosition();
-                } else {
-                    if (currentDisplayedImage >0 && currentDisplayedImage< imageIDs.size()) {
-                        // validation that the position is part of the list ... (just to be sure).
-                        currentDisplayedImage-- ;
-                        updateMainViewBasedOnCurrentVisiblePosition();
-                    }
-
-                }
-*/
             }
         });
 
@@ -89,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
                     updateMainViewBasedOnCurrentVisiblePosition();
                 }
 
-/*
+            }/*
                 if(currentDisplayedImage == imageIDs.size()-1 ) {
                     // we reached the end of the list or we surpassed it... or the current position is less than zero...
                     // so we set the the first image and we show it ...
@@ -100,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
                 }
                 updateMainViewBasedOnCurrentVisiblePosition();
 */
-            }
+
         });
 
 
