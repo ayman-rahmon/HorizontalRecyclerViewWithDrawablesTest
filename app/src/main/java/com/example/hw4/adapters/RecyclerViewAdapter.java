@@ -70,6 +70,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         private int imageID ;
+        private int position;
+
         private ImageView image ;
         private OnImageClickedListener listener ;
 
@@ -96,6 +98,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void setImageID(int imageID) {
             this.imageID = imageID ;
         }
+        public void setPosition(int position){this.position= position ;}
     }
 
 

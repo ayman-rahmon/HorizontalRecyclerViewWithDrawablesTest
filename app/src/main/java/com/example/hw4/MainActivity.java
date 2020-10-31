@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
     private Button previous , next ;
     private RecyclerViewAdapter adapter ;
     private RecyclerView list ;
+    private int currentDisplayedImage = 0 ;
+    ArrayList<Integer> imageIDs = new ArrayList<>();
 
 
     @Override
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpViews() ;
-        ArrayList<Integer> imageIDs = new ArrayList<>();
+        imageIDs = new ArrayList<>();
         imageIDs.add(R.drawable.android1) ;
         imageIDs.add(R.drawable.android2);
         imageIDs.add(R.drawable.arch);
@@ -37,8 +40,79 @@ public class MainActivity extends AppCompatActivity implements OnImageClickedLis
         list.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         list.setAdapter(adapter);
 
+
+
+        updateMainViewBasedOnCurrentVisiblePosition() ;
+        // setting up the handlers for the next and previous buttons...
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /// previous btn...
+                if(currentDisplayedImage == 0){
+                    currentDisplayedImage = imageIDs.size()-1  ;
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                }else {
+                    currentDisplayedImage-- ;
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                }
+
+
+/*
+                if(currentDisplayedImage < 0  ) {
+                    currentDisplayedImage = imageIDs.size()-1 ;
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                }else if (currentDisplayedImage ==0) {
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                } else {
+                    if (currentDisplayedImage >0 && currentDisplayedImage< imageIDs.size()) {
+                        // validation that the position is part of the list ... (just to be sure).
+                        currentDisplayedImage-- ;
+                        updateMainViewBasedOnCurrentVisiblePosition();
+                    }
+
+                }
+*/
+            }
+        });
+
+
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentDisplayedImage == imageIDs.size() -1 ) {
+                    currentDisplayedImage= 0 ;
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                } else {
+                    currentDisplayedImage++ ;
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                }
+
+/*
+                if(currentDisplayedImage == imageIDs.size()-1 ) {
+                    // we reached the end of the list or we surpassed it... or the current position is less than zero...
+                    // so we set the the first image and we show it ...
+                    updateMainViewBasedOnCurrentVisiblePosition();
+                    currentDisplayedImage = 0 ;
+                }else {
+                    currentDisplayedImage++ ;
+                }
+                updateMainViewBasedOnCurrentVisiblePosition();
+*/
+            }
+        });
+
+
     }
 
+
+
+
+    private void updateMainViewBasedOnCurrentVisiblePosition(){
+        // if the current position is between 0 and images.size()-1   we can get that image ...
+            imageView.setImageDrawable(getDrawable(imageIDs.get(currentDisplayedImage)));
+    }
 
 
     private void setUpViews() {
